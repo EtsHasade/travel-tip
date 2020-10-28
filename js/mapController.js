@@ -20,6 +20,7 @@ document.querySelector('.my-location-btn').addEventListener('click', (ev) => {
             panTo(lat, lng);
             addMarker({ lat: lat, lng: lng });
             checkWeather(lat, lng);
+            // renderLocations();
         })
 })
 
@@ -29,11 +30,10 @@ mapService.getLocs()
     .then(locs => console.log('locs', locs))
 
 window.onload = () => {
-
     initMap()
         .then(() => {
             addMarker({ lat: 32.0749831, lng: 34.9120554 });
-            checkWeather(32.0749831,34.9120554);
+            checkWeather(32.0749831, 34.9120554);
         })
         .catch(console.log('INIT MAP ERROR'));
 
@@ -44,8 +44,6 @@ window.onload = () => {
         .catch(err => {
             console.log('err!!!', err);
         })
-
-    renderLocations()
 }
 
 var infoWindow;
@@ -88,7 +86,7 @@ export function initMap(lat = 32.0749831, lng = 34.9120554) {
 
                 const latLng = { lat: mapsMouseEvent.latLng.lat(), lng: mapsMouseEvent.latLng.lng() };
                 onSetNewLocation(latLng, 'in my click location');
-                // locationService.setNewLocation(latLng,'my-dog');
+                checkWeather(lat, lng);
             });
         })
 }
@@ -142,7 +140,7 @@ function onSearchAddress(ev) {
         addMarker({ lat: lat, lng: lng });
         locationService.setNewLocation(res.geometry.location, res.formatted_address);
         renderSelectedLocation(res.formatted_address);
-        checkWeather(lat,lng);
+        checkWeather(lat, lng);
     })
 }
 
@@ -163,11 +161,10 @@ function renderLocations() {
 
     let elLocationsList = document.querySelector('.location-list');
     elLocationsList.innerHTML = userLocs.map(loc => `
-        <tr>
-            <td class="place-name">${loc.name} - ${loc.address}</td>
-            <td> lat: ${loc.lat.toFixed(5)}</td>
-            <td> lng: ${loc.lng.toFixed(5)}</td>
-        </tr>
+        <li>
+            <h4 class="place-name">${loc.name} - ${loc.address}</h4>
+            <h5> lat: ${loc.lat} / lng: ${loc.lng}</h5>
+        </li>
     `).join('');
 }
 
