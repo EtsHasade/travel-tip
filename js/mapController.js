@@ -3,6 +3,8 @@ import { mapService } from './services/mapService.js'
 var gMap;
 console.log('Main!');
 
+// Not sure this is the right place for this
+window.onSearchAddress = onSearchAddress;
 
 /////-------- add event listeners here -----------///
 
