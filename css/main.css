@@ -2,41 +2,63 @@
     box-sizing: border-box;
 }
 
-
 :root {
     --BG-Header-color: #2d4769;
     --BG-Main-color: #6696c4;
 }
-
 
 body {
     background-color: var(--BG-Header-color);
     margin: 0;
 }
 
-
-input, button {
+input,
+button {
     font-size: inherit;
 }
 
+/* ------------------ General container ------------------*/
 
 .grid-container {
+    margin: 10px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1fr, 3fr, 1fr);
+}
+
+.header {
+    grid-column: 1 / span 3;
+    grid-row: 1 / span 1;
+    border: black 2px solid;
+    height: 150px;
+    margin: 20px;
+}
+
+.main {
+    grid-column: 1 / span 3;
+    grid-row: 2 / span 1;
+    border: black 2px solid;
+    background-color: whitesmoke;
+    margin: 20px;
+}
+
+.footer {
+    grid-column: 1 / span 3;
+    grid-row: 3 / span 1;
+    border: black 2px solid;
+    height: 130px;
+    margin: 20px;
+}
+/* ------------------ Header ------------------*/
+
+.grid-header-container {
     display: grid;
     grid-template: 200px 1fr 200px / 1fr 1fr;
-    grid-template-areas: 
+    grid-template-areas:
         "header header"
         "main main"
         "footer footer"
-    ;
-}
-
-.grid-container {
-    display: grid;
-    grid-template: 100px 1fr 100px / 1fr ;
-    grid-template-areas: 
-        "header "
-        "main "
-        "footer "
     ;
 }
 
@@ -49,19 +71,19 @@ input, button {
 header {
     grid-area: header;
     background-color: var(--BG-Header-color);
-
+    margin: 10px
 }
 
 header .logo {
-    margin: 2em;
-    font-size: 80px;
+    margin: 1.5em;
+    font-size: 60px;
     color: #ffffff;
 }
 
 header .search-nav {
     margin: 2em;
     padding: 0.5em;
-    font-size: 2rem;
+    font-size: 1.3rem;
     background-color: var(--BG-Main-color);
 }
 
@@ -70,6 +92,46 @@ header .search-nav * {
 }
 
 header .search-nav-box {
-    width: 20em;
+    width: 15em;
     font-weight: lighter;
+}
+
+/* ------------------ Footer ------------------*/
+
+/* ------------------ Shani ------------------*/
+
+.grid-main-container {
+    background-color: whitesmoke;
+    margin: 10px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    border: black 2px solid;
+}
+
+.item {
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    height: 90%;
+}
+
+.item-weater {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+    border: black 2px solid;
+}
+
+.item-location-list {
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 1;
+    border: black 2px solid;
+}
+
+.item-map {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 2;
+    border: black 2px solid;
+
 }
