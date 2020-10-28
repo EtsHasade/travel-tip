@@ -177,8 +177,6 @@ header .search-nav-box {
 }
 
 
-/* ------------------ Shani ------------------*/
-
 .item-map {
     grid-column: 2 / span 1;
     grid-row: 1 / span 2;
@@ -200,4 +198,10 @@ header .search-nav-box {
     list-style-type: none;
     margin: 0;
     padding: 0;
+}
+
+.water-header{
+    margin: 5px;
+    padding: 5px;
+    font-size: 24px;
 }
