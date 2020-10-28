@@ -85,7 +85,9 @@ export function initMap(lat = 32.0749831, lng = 34.9120554) {
                 );
                 
                 infoWindow.open(gMap);
-                locationService.setNewLocation(mapsMouseEvent.latLng)
+
+                const latLng = {lat: mapsMouseEvent.latLng.lat(),lng: mapsMouseEvent.latLng.lng()};
+                locationService.setNewLocation(latLng,'my-dog');
               });
         })
 
