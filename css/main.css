@@ -125,6 +125,17 @@ header .search-nav-box {
     border: black 2px solid;
 }
 
+.location-list {
+    margin: 0;
+    overflow-y: scroll;
+}
+.location-list > li{
+    list-style-type: none;
+    background-color: rgb(145, 116, 126);
+    padding: 0.5em;
+    margin: 0.2em 0;
+}
+
 .item-map {
     grid-column: 2 / span 1;
     grid-row: 1 / span 2;
