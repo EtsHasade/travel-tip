@@ -120,4 +120,21 @@ function _connectGoogleApi() {
 }
 
 
+window.onSearchAddress = onSearchAddress;
+function onSearchAddress(ev) {
+    if (ev) ev.preventDefault();
+
+    const elInputAddress = document.querySelector('input[name=search]');
+    console.log(elInputAddress);
+
+    const prmAns = mapService.searchAddress(elInputAddress.value);
+    prmAns.then((res) => {
+        console.log(res);
+        var lat = res.lat;
+        var lng = res.lng;
+        panTo(lat, lng);
+        addMarker({ lat: lat, lng: lng });
+    })
+
+}
 
