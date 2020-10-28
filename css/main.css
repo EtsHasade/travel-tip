@@ -128,12 +128,14 @@ header .search-nav-box {
 .location-list {
     margin: 0;
     overflow-y: scroll;
+    height: 150px;
 }
 .location-list > li{
     list-style-type: none;
     background-color: rgb(145, 116, 126);
     padding: 0.5em;
     margin: 0.2em 0;
+    text-align: justify;
 }
 
 .item-map {

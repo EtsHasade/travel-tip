@@ -150,5 +150,14 @@ function onSetNewLocation(latLng,...[name]) {
 }
 
 function renderLocations() {
-    console.log(locationService.getLocationsForDisplay()) 
+    const userLocs = locationService.getLocationsForDisplay()
+    console.log("renderLocations -> userLocs", userLocs)
+
+    let elLocationsList = document.querySelector('.location-list');
+    elLocationsList.innerHTML = userLocs.map(loc => `
+        <li>
+            <h4 class="place-name">${loc.name} - ${loc.address}</h4>
+            <h5> lat: ${loc.lat} / lng: ${loc.lng}</h5>
+        </li>
+    `).join('');
 }
