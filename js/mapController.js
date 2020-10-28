@@ -19,28 +19,7 @@ document.querySelector('.my-location-btn').addEventListener('click', (ev) => {
 })
 
 
-// Create the initial InfoWindow.
-function initInfoWindow() {
-    let infoWindow = new google.maps.InfoWindow({
-        content: "You are here",
-        position: getPosition(),
-    });
-    infoWindow.open(map);
-}
 
-// gMap.addListener("click", (mapsMouseEvent) => {
-//     // Close the current InfoWindow.
-//     infoWindow.close();
-
-//     // Create a new InfoWindow.
-//     infoWindow = new google.maps.InfoWindow({
-//       position: mapsMouseEvent.latLng,
-//     });
-//     infoWindow.setContent(
-//       JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
-//     );
-//     infoWindow.open(map);
-//   });
 
 /////////----------------------------------------///////////
 
@@ -49,7 +28,6 @@ mapService.getLocs()
     .then(locs => console.log('locs', locs))
 
 window.onload = () => {
-
     initMap()
         .then(() => {
             addMarker({ lat: 32.0749831, lng: 34.9120554 });
@@ -64,10 +42,10 @@ window.onload = () => {
             console.log('err!!!', err);
         })
 
-    initInfoWindow()
+
 }
 
-
+var infoWindow;
 export function initMap(lat = 32.0749831, lng = 34.9120554) {
     console.log('InitMap');
     return _connectGoogleApi()
@@ -80,6 +58,32 @@ export function initMap(lat = 32.0749831, lng = 34.9120554) {
             })
             console.log('Map!', gMap);
         })
+        .then(() => {
+            infoWindow = new google.maps.InfoWindow({
+                content: "You are here",
+                position: { lat, lng },
+            });
+            infoWindow.open(gMap);
+            console.log('initial info window');
+        })
+        .then(() => {
+            gMap.addListener("click", (mapsMouseEvent) => {
+                // Close the current InfoWindow.
+                infoWindow.close();
+            
+                // Create a new InfoWindow.
+                infoWindow = new google.maps.InfoWindow({
+                  position: mapsMouseEvent.latLng,
+                });
+                infoWindow.setContent(
+                  JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+                );
+                infoWindow.open(gMap);
+              });
+        })
+
+
+
 }
 
 function addMarker(loc) {
