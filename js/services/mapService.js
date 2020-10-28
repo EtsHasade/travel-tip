@@ -22,7 +22,7 @@ function searchAddress(address) {
 
 
 function getWeather(lat,lng) {
-    return axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&&lon=${lng}&units=metric&APPID=c153ea6578562393b45a599c88fcc08c`)
+    return axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&&lon=${lng}&units=metric&APPID=c153ea6578562393b45a599c88fcc08c`)
         .then(res => res.data)
 }
 
