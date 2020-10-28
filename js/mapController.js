@@ -1,4 +1,5 @@
 import { mapService } from './services/mapService.js'
+import {locationService} from './services/LocationService.js'
 
 var gMap;
 console.log('Main!');
@@ -6,7 +7,7 @@ console.log('Main!');
 // Not sure this is the right place for this
 window.onSearchAddress = onSearchAddress;
 
-/////-------- add event listeners here -----------///
+/////-------- add event listeners to DOM element here -----------///
 
 document.querySelector('.my-location-btn').addEventListener('click', (ev) => {
     console.log('My location clicked');
@@ -69,6 +70,8 @@ export function initMap(lat = 32.0749831, lng = 34.9120554) {
             console.log('initial info window');
         })
         .then(() => {
+
+            //// --------- add event listener for gMap here ------ ///
             gMap.addListener("click", (mapsMouseEvent) => {
                 // Close the current InfoWindow.
                 infoWindow.close();
@@ -80,7 +83,9 @@ export function initMap(lat = 32.0749831, lng = 34.9120554) {
                 infoWindow.setContent(
                   JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
                 );
+                
                 infoWindow.open(gMap);
+                locationService.setNewLocation(mapsMouseEvent.latLng)
               });
         })
 
