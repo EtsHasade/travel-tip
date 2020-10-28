@@ -132,7 +132,7 @@ function onSearchAddress(ev) {
         console.log(res.formatted_address)
         panTo(res.geometry.location.lat, res.geometry.location.lng);
         addMarker({ lat: res.geometry.location.lat, lng: res.geometry.location.lng });
-        locationService.setNewLocation(res.geometry.location, 'shani-test-place-name');
+        locationService.setNewLocation(res.geometry.location, res.formatted_address);
         renderSelectedLocation(res.formatted_address)
     })
 
