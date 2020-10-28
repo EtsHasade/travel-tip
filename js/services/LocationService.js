@@ -33,6 +33,7 @@ const gDefaultLocations = [
 
 // const gLocations =  gDefaultLocations;
 const gLocations = (loadUserLocs() || gDefaultLocations);
+window.gLocations = gLocations;
 
 function setNewLocation({lat, lng },...[address]) {
     gLocations.push({

@@ -44,6 +44,8 @@ window.onload = () => {
         .catch(err => {
             console.log('err!!!', err);
         })
+
+    renderLocations()
 }
 
 var infoWindow;
