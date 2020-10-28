@@ -27,6 +27,7 @@ mapService.getLocs()
     .then(locs => console.log('locs', locs))
 
 window.onload = () => {
+
     initMap()
         .then(() => {
             addMarker({ lat: 32.0749831, lng: 34.9120554 });
@@ -40,6 +41,8 @@ window.onload = () => {
         .catch(err => {
             console.log('err!!!', err);
         })
+
+    renderLocations()
 }
 
 var infoWindow;
@@ -80,10 +83,10 @@ export function initMap(lat = 32.0749831, lng = 34.9120554) {
 
                 infoWindow.open(gMap);
 
-                const latLng = {lat: mapsMouseEvent.latLng.lat(),lng: mapsMouseEvent.latLng.lng()};
-                onSetNewLocation(latLng,'in my click location');
+                const latLng = { lat: mapsMouseEvent.latLng.lat(), lng: mapsMouseEvent.latLng.lng() };
+                onSetNewLocation(latLng, 'in my click location');
                 // locationService.setNewLocation(latLng,'my-dog');
-              });
+            });
         })
 }
 
@@ -125,7 +128,7 @@ function _connectGoogleApi() {
 
 function onSearchAddress(ev) {
     if (ev) ev.preventDefault();
-    
+
     const elInputAddress = document.querySelector('input[name=search]');
     const prmAns = mapService.searchAddress(elInputAddress.value);
     prmAns.then((res) => {
@@ -144,7 +147,7 @@ function renderSelectedLocation(address) {
 }
 
 
-function onSetNewLocation(latLng,...[name]) {
+function onSetNewLocation(latLng, ...[name]) {
     locationService.setNewLocation(latLng, name);
     renderLocations()
 }

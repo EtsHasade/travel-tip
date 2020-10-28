@@ -1,9 +1,13 @@
 'use strict';
 
+import {storage} from './storage-service.js';
+
 export const locationService = {
     setNewLocation,
     getLocationsForDisplay,
 }
+
+const USER_LOCS_KEY = 'userLocs';
 
 var gNextId = 1001;
 const gDefaultLocations = [
@@ -27,7 +31,8 @@ const gDefaultLocations = [
     },
 ]
 
-const gLocations = gDefaultLocations;
+// const gLocations =  gDefaultLocations;
+const gLocations = (loadUserLocs() || gDefaultLocations);
 
 function setNewLocation({lat, lng },...[address]) {
     gLocations.push({
@@ -39,7 +44,8 @@ function setNewLocation({lat, lng },...[address]) {
         weather: 'hut',
         createdAt: new Date().getDate(),
         updatedAt: new Date().getDate()
-    })    
+    })   
+    saveUserLocs(); 
 }
 
 
@@ -49,4 +55,13 @@ function getLocationsForDisplay() {
 
 function getLocations() {
     return gLocations;
+}
+
+
+function saveUserLocs() {
+    storage.saveToStorage(USER_LOCS_KEY, gLocations);
+}
+
+function loadUserLocs() {
+    return storage.loadFromStorage(USER_LOCS_KEY)
 }
