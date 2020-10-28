@@ -160,7 +160,8 @@ function renderLocations() {
     elLocationsList.innerHTML = userLocs.map(loc => `
         <tr>
             <td class="place-name">${loc.name} - ${loc.address}</td>
-            <td> lat: ${loc.lat} / lng: ${loc.lng}</td>
+            <td> lat: ${loc.lat.toFixed(5)}</td>
+            <td> lng: ${loc.lng.toFixed(5)}</td>
         </tr>
     `).join('');
 }

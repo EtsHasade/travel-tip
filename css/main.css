@@ -5,11 +5,17 @@
 :root {
     --BG-Header-color: #2d4769;
     --BG-Main-color: #c5d9ec;
-    --BG-locList: #d4b8c2;
+    --BG-locList: #ffe9ae;
+}
+
+html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
 }
 
 body {
-    background-color: var(--BG-Header-color);
+    background-color: var(--BG-Main-color);
+    padding: 0;
     margin: 0;
 }
 
@@ -32,7 +38,10 @@ button {
     border: black 2px solid;
     background-color: var(--BG-Header-color);
     margin: 10px;
-    text-align: center;   
+    padding: 1em;
+    text-align: center;  
+    color: #ffffff;
+
 }
 
 .main {
@@ -42,6 +51,11 @@ button {
     /* background-color: whitesmoke; */
     background-color: var(--BG-Main-color);
     margin: 20px;
+
+    background-image: url(../img/053-free-vector-world-map.png);
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
 }
 
 .footer {
@@ -56,6 +70,7 @@ button {
 .grid-header-container {
     display: grid;
     grid-template: repeat(2, 1fr) / 1fr 1fr;
+    justify-content: space-between;
 }
 
 .flex-center {
@@ -74,7 +89,7 @@ header .logo {
 
 header .search-nav {
     /* font-size: 1.3rem; */
-    background-color: var(--BG-Main-color);
+    /* background-color: var(--BG-Main-color); */
     grid-row: 1 /span 1 ;
     grid-column: 2 /3 ;
     padding: 1em;
