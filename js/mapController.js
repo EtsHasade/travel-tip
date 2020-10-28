@@ -3,6 +3,8 @@ import { mapService } from './services/mapService.js'
 var gMap;
 console.log('Main!');
 
+// Not sure this is the right place for this
+window.onSearchAddress = onSearchAddress;
 
 /////-------- add event listeners here -----------///
 
@@ -124,21 +126,13 @@ function _connectGoogleApi() {
 }
 
 
-window.onSearchAddress = onSearchAddress;
 function onSearchAddress(ev) {
     if (ev) ev.preventDefault();
-
     const elInputAddress = document.querySelector('input[name=search]');
-    console.log(elInputAddress);
-
     const prmAns = mapService.searchAddress(elInputAddress.value);
     prmAns.then((res) => {
-        console.log(res);
-        var lat = res.lat;
-        var lng = res.lng;
-        panTo(lat, lng);
-        addMarker({ lat: lat, lng: lng });
+        panTo(res.lat, res.lng);
+        addMarker({ lat: res.lat, lng: res.lng });
     })
-
 }
 
