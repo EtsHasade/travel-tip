@@ -2,6 +2,7 @@
 
 export const locationService = {
     setNewLocation,
+    getLocationsForDisplay,
 }
 
 var gNextId = 1001;
@@ -36,7 +37,13 @@ function setNewLocation({lat, lng },...[name]) {
         createdAt: new Date().getDate(),
         updatedAt: new Date().getDate()
     })    
-    console.log('set new location',);
-    console.log("setNewLocation -> lat, lng ", lat, lng )
-    console.log('gloc', gLocations);
+}
+
+
+function getLocationsForDisplay() {
+    return getLocations()
+}
+
+function getLocations() {
+    return gLocations;
 }

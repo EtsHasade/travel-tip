@@ -87,7 +87,8 @@ export function initMap(lat = 32.0749831, lng = 34.9120554) {
                 infoWindow.open(gMap);
 
                 const latLng = {lat: mapsMouseEvent.latLng.lat(),lng: mapsMouseEvent.latLng.lng()};
-                locationService.setNewLocation(latLng,'my-dog');
+                onSetNewLocation(latLng,'my-dog');
+                // locationService.setNewLocation(latLng,'my-dog');
               });
         })
 
@@ -143,3 +144,13 @@ function onSearchAddress(ev) {
     })
 }
 
+
+function onSetNewLocation(latLng,...[name]) {
+    locationService.setNewLocation(latLng, name);
+    renderLocations()
+}
+
+
+function renderLocations() {
+    console.log(locationService.getLocationsForDisplay()) 
+}
