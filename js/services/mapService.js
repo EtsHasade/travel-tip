@@ -2,6 +2,7 @@ export const mapService = {
     getLocs: getLocs,
     searchAddress
 }
+
 var locs = [{ lat: 11.22, lng: 22.11 }]
 
 function getLocs() {

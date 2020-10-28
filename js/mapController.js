@@ -3,29 +3,8 @@ import { mapService } from './services/mapService.js'
 var gMap;
 console.log('Main!');
 
-window.onSearchAddress = onSearchAddress;
 
-mapService.getLocs()
-    .then(locs => console.log('locs', locs))
-
-window.onload = () => {
-
-    initMap()
-        .then(() => {
-
-            addMarker({ lat: 32.0749831, lng: 34.9120554 });
-        })
-        .catch(console.log('INIT MAP ERROR'));
-
-    getPosition()
-        .then(pos => {
-
-            console.log('User position is:', pos.coords);
-        })
-        .catch(err => {
-            console.log('err!!!', err);
-        })
-}
+/////-------- add event listeners here -----------///
 
 document.querySelector('.my-location-btn').addEventListener('click', (ev) => {
     console.log('My location clicked');
@@ -38,6 +17,55 @@ document.querySelector('.my-location-btn').addEventListener('click', (ev) => {
             addMarker({ lat: lat, lng: lng });
         })
 })
+
+
+// Create the initial InfoWindow.
+function initInfoWindow() {
+    let infoWindow = new google.maps.InfoWindow({
+        content: "You are here",
+        position: getPosition(),
+    });
+    infoWindow.open(map);
+}
+
+// gMap.addListener("click", (mapsMouseEvent) => {
+//     // Close the current InfoWindow.
+//     infoWindow.close();
+
+//     // Create a new InfoWindow.
+//     infoWindow = new google.maps.InfoWindow({
+//       position: mapsMouseEvent.latLng,
+//     });
+//     infoWindow.setContent(
+//       JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+//     );
+//     infoWindow.open(map);
+//   });
+
+/////////----------------------------------------///////////
+
+
+mapService.getLocs()
+    .then(locs => console.log('locs', locs))
+
+window.onload = () => {
+
+    initMap()
+        .then(() => {
+            addMarker({ lat: 32.0749831, lng: 34.9120554 });
+        })
+        .catch(console.log('INIT MAP ERROR'));
+
+    getPosition()
+        .then(pos => {
+            console.log('User position is:', pos.coords);
+        })
+        .catch(err => {
+            console.log('err!!!', err);
+        })
+
+    initInfoWindow()
+}
 
 
 export function initMap(lat = 32.0749831, lng = 34.9120554) {
