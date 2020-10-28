@@ -12,7 +12,7 @@ const gDefaultLocations = [
         lat: 11.22, lng: 22.11,
         weather: 'wet',
         createdAt: new Date().getDate(),
-        updatedAt: new Date().getDate()
+        updatedAt: new Date().getDate(),
     },
     {
         id: gNextId++,

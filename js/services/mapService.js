@@ -16,7 +16,7 @@ function getLocs() {
 
 function searchAddress(address) {
     return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyAygmMRDmE5l3JX0JxP9hmDtHdl5Tnddes`)
-        .then(res => res.data.results[0].geometry.location)
+        .then(res => res.data.results[0])
 }
 
 

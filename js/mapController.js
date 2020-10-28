@@ -1,5 +1,5 @@
 import { mapService } from './services/mapService.js'
-import {locationService} from './services/LocationService.js'
+import { locationService } from './services/LocationService.js'
 
 var gMap;
 console.log('Main!');
@@ -21,11 +21,7 @@ document.querySelector('.my-location-btn').addEventListener('click', (ev) => {
         })
 })
 
-
-
-
 /////////----------------------------------------///////////
-
 
 mapService.getLocs()
     .then(locs => console.log('locs', locs))
@@ -44,8 +40,6 @@ window.onload = () => {
         .catch(err => {
             console.log('err!!!', err);
         })
-
-
 }
 
 var infoWindow;
@@ -75,24 +69,21 @@ export function initMap(lat = 32.0749831, lng = 34.9120554) {
             gMap.addListener("click", (mapsMouseEvent) => {
                 // Close the current InfoWindow.
                 infoWindow.close();
-            
+
                 // Create a new InfoWindow.
                 infoWindow = new google.maps.InfoWindow({
-                  position: mapsMouseEvent.latLng,
+                    position: mapsMouseEvent.latLng,
                 });
                 infoWindow.setContent(
-                  JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+                    JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
                 );
-                
+
                 infoWindow.open(gMap);
 
-                const latLng = {lat: mapsMouseEvent.latLng.lat(),lng: mapsMouseEvent.latLng.lng()};
-                locationService.setNewLocation(latLng,'my-dog');
-              });
+                const latLng = { lat: mapsMouseEvent.latLng.lat(), lng: mapsMouseEvent.latLng.lng() };
+                locationService.setNewLocation(latLng, 'my-dog');
+            });
         })
-
-
-
 }
 
 function addMarker(loc) {
@@ -117,7 +108,6 @@ function getPosition() {
     })
 }
 
-
 function _connectGoogleApi() {
     if (window.google) return Promise.resolve()
     const API_KEY = 'AIzaSyAygmMRDmE5l3JX0JxP9hmDtHdl5Tnddes';
@@ -132,14 +122,22 @@ function _connectGoogleApi() {
     })
 }
 
-
 function onSearchAddress(ev) {
     if (ev) ev.preventDefault();
+    
     const elInputAddress = document.querySelector('input[name=search]');
     const prmAns = mapService.searchAddress(elInputAddress.value);
     prmAns.then((res) => {
-        panTo(res.lat, res.lng);
-        addMarker({ lat: res.lat, lng: res.lng });
+        console.log(res.formatted_address)
+        panTo(res.geometry.location.lat, res.geometry.location.lng);
+        addMarker({ lat: res.geometry.location.lat, lng: res.geometry.location.lng });
+        locationService.setNewLocation(res.geometry.location, 'shani-test-place-name');
+        renderSelectedLocation(res.formatted_address)
     })
+
 }
 
+function renderSelectedLocation(address) {
+    const elHeader = document.querySelector('.selected-address-display');
+    elHeader.innerHTML = address;
+}
