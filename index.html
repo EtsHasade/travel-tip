@@ -14,8 +14,10 @@
         <header class="header grid-header-container">
             <h1 class="logo">Travel Tip</h1>
             <div class="search-nav flex-center">
-                <input class="search-nav-box" type="search" name="" id="">
-                <button class="btn search-btn">Search</button>
+                <form onsubmit="onSearchAddress(event)">
+                    <input class="search-nav-box" type="text" name="search" placeholder="Add an address" value="1600+Amphitheatre+Parkway,+Mountain+View,+CA">
+                    <button class="btn search-btn">Go</button>
+                </form>
                 <button class="btn my-location-btn">My location</button>
             </div>
             <div class="selected-location-nav flex-center">
@@ -43,7 +45,7 @@
         </footer>
 
     </div>
-
+    <script src="lib/axios.js"></script>
     <script type="module" src="js/mapController.js"></script>
 
 </body>
