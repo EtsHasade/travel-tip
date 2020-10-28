@@ -33,7 +33,7 @@ function setNewLocation({lat, lng },...[address]) {
     gLocations.push({
         id: gNextId++,
         address: (address || 'UnKnown'),
-        name: 'unKnown',
+        name: 'unKnown place',
         lat,
         lng,
         weather: 'hut',
