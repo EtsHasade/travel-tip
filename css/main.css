@@ -4,7 +4,8 @@
 
 :root {
     --BG-Header-color: #2d4769;
-    --BG-Main-color: #6696c4;
+    --BG-Main-color: #c5d9ec;
+    --BG-locList: #d4b8c2;
 }
 
 body {
@@ -38,7 +39,8 @@ button {
     grid-column: 1 / span 3;
     grid-row: 2 / span 1;
     border: black 2px solid;
-    background-color: whitesmoke;
+    /* background-color: whitesmoke; */
+    background-color: var(--BG-Main-color);
     margin: 20px;
 }
 
@@ -75,6 +77,7 @@ header .search-nav {
     background-color: var(--BG-Main-color);
     grid-row: 1 /span 1 ;
     grid-column: 2 /3 ;
+    padding: 1em;
 }
 
 header .search-nav * {
@@ -95,7 +98,7 @@ header .search-nav-box {
 /* ------------------ Main container ------------------*/
 
 .grid-main-container {
-    background-color: whitesmoke;
+    /* background-color: whitesmoke; */
     margin: 10px;
     padding: 10px;
     display: grid;
@@ -123,18 +126,42 @@ header .search-nav-box {
     border: black 2px solid;
 }
 
+
+/* ------------------ Elhanan ------------------*/
+
+
+.title-location-list{
+    background-color: var(--BG-Header-color);
+    color: #ffffff;
+    margin: 0;
+    padding: 0.2s;
+}
+
+.tabel-warper {
+    position: relative;
+    height: 150px;
+    overflow-y:scroll;  
+}
+
 .location-list {
     margin: 0;
     overflow-y: scroll;
     height: 150px;
 }
-.location-list > li{
-    list-style-type: none;
-    background-color: rgb(145, 116, 126);
+.location-list > tr{
+    background-color: var(--BG-locList);
     padding: 0.5em;
     margin: 0.2em 0;
     text-align: justify;
+
 }
+.location-list td{
+    padding: 0.2em;
+    margin: 0;
+}
+
+
+/* ------------------ Shani ------------------*/
 
 .item-map {
     grid-column: 2 / span 1;

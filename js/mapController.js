@@ -29,6 +29,7 @@ mapService.getLocs()
     .then(locs => console.log('locs', locs))
 
 window.onload = () => {
+
     initMap()
         .then(() => {
             addMarker({ lat: 32.0749831, lng: 34.9120554 });
@@ -43,6 +44,8 @@ window.onload = () => {
         .catch(err => {
             console.log('err!!!', err);
         })
+
+    renderLocations()
 }
 
 var infoWindow;
@@ -160,10 +163,10 @@ function renderLocations() {
 
     let elLocationsList = document.querySelector('.location-list');
     elLocationsList.innerHTML = userLocs.map(loc => `
-        <li>
-            <h4 class="place-name">${loc.name} - ${loc.address}</h4>
-            <h5> lat: ${loc.lat} / lng: ${loc.lng}</h5>
-        </li>
+        <tr>
+            <td class="place-name">${loc.name} - ${loc.address}</td>
+            <td> lat: ${loc.lat} / lng: ${loc.lng}</td>
+        </tr>
     `).join('');
 }
 
