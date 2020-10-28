@@ -110,9 +110,7 @@ header .search-nav-box {
     height: 100%;
 }
 
-/* ------------------ Footer ------------------*/
-
-/* ------------------ Shani ------------------*/
+/* ------------------ Main container ------------------*/
 
 .grid-main-container {
     /* background-color: whitesmoke; */
@@ -185,4 +183,20 @@ header .search-nav-box {
     grid-row: 1 / span 2;
     border: black 2px solid;
 
+}
+
+
+/* ------------------ Weater ------------------*/
+
+.weater-details {
+    text-align: left;
+}
+
+
+
+/* list-helpers */
+.clean-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }

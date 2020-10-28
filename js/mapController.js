@@ -2,11 +2,12 @@ import { mapService } from './services/mapService.js'
 import { locationService } from './services/LocationService.js'
 
 var gMap;
+
 console.log('Main!');
 
 // Not sure this is the right place for this
 window.onSearchAddress = onSearchAddress;
-
+window.checkWeather = checkWeather;
 /////-------- add event listeners to DOM element here -----------///
 
 document.querySelector('.my-location-btn').addEventListener('click', (ev) => {
@@ -18,6 +19,7 @@ document.querySelector('.my-location-btn').addEventListener('click', (ev) => {
             console.log('Got pos >> lat: ', lat, 'lng: ', lng);
             panTo(lat, lng);
             addMarker({ lat: lat, lng: lng });
+            checkWeather(lat, lng);
         })
 })
 
@@ -31,6 +33,7 @@ window.onload = () => {
     initMap()
         .then(() => {
             addMarker({ lat: 32.0749831, lng: 34.9120554 });
+            checkWeather(32.0749831,34.9120554);
         })
         .catch(console.log('INIT MAP ERROR'));
 
@@ -133,12 +136,14 @@ function onSearchAddress(ev) {
     const prmAns = mapService.searchAddress(elInputAddress.value);
     prmAns.then((res) => {
         console.log(res.formatted_address)
-        panTo(res.geometry.location.lat, res.geometry.location.lng);
-        addMarker({ lat: res.geometry.location.lat, lng: res.geometry.location.lng });
+        var lat = res.geometry.location.lat;
+        var lng = res.geometry.location.lng;
+        panTo(lat, lng);
+        addMarker({ lat: lat, lng: lng });
         locationService.setNewLocation(res.geometry.location, res.formatted_address);
-        renderSelectedLocation(res.formatted_address)
+        renderSelectedLocation(res.formatted_address);
+        checkWeather(lat,lng);
     })
-
 }
 
 function renderSelectedLocation(address) {
@@ -164,4 +169,23 @@ function renderLocations() {
             <td> lng: ${loc.lng.toFixed(5)}</td>
         </tr>
     `).join('');
+}
+
+function checkWeather(lat, lng) {
+    const prmAns = mapService.getWeather(lat, lng);
+    prmAns.then((res) => {
+        console.log(res)
+        renderWeather(res)
+    })
+}
+
+function renderWeather(res) {
+    const elWeatherDetails = document.querySelector('.weater-details');
+    var strHTML = `
+        <li>general description: ${res.weather[0].description}</li>
+        <li>min temp: ${res.main.temp_min}</li>
+        <li>max temp: ${res.main.temp_max}</li>
+        <li>Feels like: ${res.main.feels_like}</li>
+    `
+    elWeatherDetails.innerHTML = strHTML;
 }
