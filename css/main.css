@@ -208,10 +208,7 @@ header .search-nav-box {
     box-shadow: 0 2px 7px 1px rgba(0,0,0,0.3);
 
     /*-- my edition--*/
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: inherit;
+    padding-left: 2em;
 }
 
 .gm-style .gm-style-iw-d {
