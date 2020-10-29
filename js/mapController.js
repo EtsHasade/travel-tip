@@ -1,5 +1,6 @@
 import { mapService } from './services/mapService.js'
 import { locationService } from './services/LocationService.js'
+import '../lib/swal.js'
 
 var gMap;
 
