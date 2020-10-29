@@ -214,6 +214,10 @@ header .search-nav-box {
     font-family: inherit;
 }
 
+.gm-style .gm-style-iw-d {
+    text-align: center;
+}
+
 /* ------------------ Weater ------------------*/
 
 .water-header {
