@@ -81,7 +81,7 @@ export function initMap(lat = 32.0749831, lng = 34.9120554) {
                     position: mapsMouseEvent.latLng,
                 });
                 infoWindow.setContent(
-                    JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+                    JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2).slice(1,-1);
                 );
 
                 infoWindow.open(gMap);
