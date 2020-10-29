@@ -36,7 +36,7 @@ const gLocations = (loadUserLocs() || gDefaultLocations);
 window.gLocations = gLocations;
 
 function setNewLocation({lat, lng },...[address]) {
-    gLocations.push({
+    gLocations.unshift({
         id: gNextId++,
         address: (address || 'UnKnown'),
         name: 'unKnown place',
