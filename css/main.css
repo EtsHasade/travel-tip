@@ -168,8 +168,11 @@ header .search-nav-box {
     padding: 0.5em;
     margin: 0.2em 0;
     text-align: justify;
-    
 }
+.location-list > tr:hover{
+    background-color: rgb(187, 174, 245);
+}
+
 .location-list td{
     padding: 0.2em;
     margin: 0;
