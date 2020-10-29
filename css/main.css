@@ -35,11 +35,10 @@ button {
 .header {
     grid-column: 1 / -1;
     grid-row: 1 / span 1;
-    border: black 2px solid;
     background-color: var(--BG-Header-color);
     margin: 10px;
     padding: 1em;
-    text-align: center;  
+    text-align: center;
     color: #ffffff;
 
 }
@@ -47,7 +46,6 @@ button {
 .main {
     grid-column: 1 / span 3;
     grid-row: 2 / span 1;
-    border: black 2px solid;
     /* background-color: whitesmoke; */
     background-color: var(--BG-Main-color);
     margin: 20px;
@@ -61,16 +59,23 @@ button {
 .footer {
     grid-column: 1 / span 3;
     grid-row: 3 / span 1;
-    border: black 2px solid;
     height: 130px;
     margin: 20px;
 }
+
 /* ------------------ Header ------------------*/
 
 .grid-header-container {
     display: grid;
     grid-template: repeat(2, 1fr) / 1fr 1fr;
     justify-content: space-between;
+}
+
+h1 {
+    font-size: 42px;
+    margin: 0;
+    margin-left: 25px;
+    text-align: left;
 }
 
 .flex-center {
@@ -81,17 +86,17 @@ button {
 
 header .logo {
     /* margin: 1.5em; */
-    /* font-size: 48px; */
+    /* font-size: 36px; */
     color: #ffffff;
-    grid-row: 1 /span 1 ;
-    grid-column: 1 /2 ;
+    grid-row: 1 /span 1;
+    grid-column: 1 /2;
 }
 
 header .search-nav {
     /* font-size: 1.3rem; */
     /* background-color: var(--BG-Main-color); */
-    grid-row: 1 /span 1 ;
-    grid-column: 2 /3 ;
+    grid-row: 1 /span 1;
+    grid-column: 2 /3;
     padding: 1em;
 }
 
@@ -119,7 +124,6 @@ header .search-nav-box {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    border: black 2px solid;
 }
 
 .item {
@@ -132,30 +136,30 @@ header .search-nav-box {
 .item-weater {
     grid-column: 1 / span 1;
     grid-row: 1 / span 1;
-    border: black 2px solid;
+    border: #2d4769 4px solid;
+    border-radius: 12px;
 }
 
 .item-location-list {
     grid-column: 1 / span 1;
     grid-row: 2 / span 1;
-    border: black 2px solid;
+    border: #2d4769 4px solid;
+    border-radius: 12px;
 }
 
-
-/* ------------------ Elhanan ------------------*/
-
-
-.title-location-list{
+.title-location-list {
     background-color: var(--BG-Header-color);
     color: #ffffff;
     margin: 0;
     padding: 0.2s;
+    font-size: 24px;
+    text-transform: uppercase;
 }
 
 .tabel-warper {
     position: relative;
     height: 150px;
-    overflow-y:scroll;  
+    overflow-y: scroll;
 }
 
 .location-list {
@@ -163,14 +167,16 @@ header .search-nav-box {
     overflow-y: scroll;
     height: 150px;
 }
-.location-list > tr{
+
+.location-list>tr {
     background-color: var(--BG-locList);
     padding: 0.5em;
     margin: 0.2em 0;
     text-align: justify;
-    
+
 }
-.location-list td{
+
+.location-list td {
     padding: 0.2em;
     margin: 0;
     width: 100%;
@@ -180,28 +186,36 @@ header .search-nav-box {
 .item-map {
     grid-column: 2 / span 1;
     grid-row: 1 / span 2;
-    border: black 2px solid;
+    border: #2d4769 4px solid;
+    border-radius: 12px;
 
 }
 
 
 /* ------------------ Weater ------------------*/
 
+.water-header {
+    background-color: var(--BG-Header-color);
+    margin: 10px;
+    padding: 5px;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+}
+
 .weater-details {
     text-align: left;
 }
 
-
+.weater-details li {
+    font-size: 18px;
+    margin: 5px;
+}
 
 /* list-helpers */
 .clean-list {
     list-style-type: none;
     margin: 0;
     padding: 0;
-}
-
-.water-header{
-    margin: 5px;
-    padding: 5px;
-    font-size: 24px;
 }

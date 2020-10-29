@@ -182,10 +182,10 @@ function checkWeather(lat, lng) {
 function renderWeather(res) {
     const elWeatherDetails = document.querySelector('.weater-details');
     var strHTML = `
-        <li>general description: ${res.weather[0].description}</li>
-        <li>min temp: ${res.main.temp_min}</li>
-        <li>max temp: ${res.main.temp_max}</li>
-        <li>Feels like: ${res.main.feels_like}</li>
+        <li>General description: ${res.weather[0].description}</li>
+        <li>Min temp: ${res.main.temp_min} ℃</li>
+        <li>Max temp: ${res.main.temp_max} ℃</li>
+        <li>Feels like: ${res.main.feels_like} ℃</li>
     `
     elWeatherDetails.innerHTML = strHTML;
 }
